@@ -18,8 +18,7 @@
 
 (function() {
 	function pimp_news() {
-		var date = document.evaluate("//td[@valign='bottom']", document.body, null,
-		                            XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.textContent;
+		var date = document.title.substring(15, 23);
 
 		var divs = document.getElementsByTagName('div');
 		for(var i = 0; i < divs.length; i++) {
