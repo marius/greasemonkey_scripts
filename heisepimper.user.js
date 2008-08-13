@@ -19,11 +19,10 @@
 (function() {
 	function pimp_news() {
 		var date = document.title.substring(15, 23);
-
+		var shortTitle = document.title.replace(/heise online - \d\d\.\d\d\.\d\d - /, '');
 		var divs = document.getElementsByTagName('div');
 		for(var i = 0; i < divs.length; i++) {
 			if(divs[i].className == 'meldung_wrapper') {
-				var shortTitle = document.title.replace(/heise online - \d\d\.\d\d\.\d\d - /, '');
 				document.body.innerHTML = date
 				                          + '<h2>'
 				                          + shortTitle
@@ -35,13 +34,7 @@
 	}
 
 	function pimp_headings() {
-		var divs = document.getElementsByTagName('div');
-		for(var i = 0; i < divs.length; i++) {
-			if(divs[i].id == 'mitte_news') {
-				document.body.innerHTML = divs[i].innerHTML;
-				return;
-			}
-		}
+		document.body.innerHTML = document.getElementById('mitte_news').innerHTML;
 	}
 
 	function pimp_telepolis() {
@@ -58,8 +51,6 @@
 	for(var i = 0; i < spans.length; i++) {
 		if(spans[i].textContent == 'Anzeige') {
 			spans[i].style.display = 'none';
-			spans[i].parentNode.parentNode.parentNode.parentNode.parentNode.removeChild(
-			    spans[i].parentNode.parentNode.parentNode.parentNode);
 		}
 	}
 
