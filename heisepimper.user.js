@@ -37,7 +37,7 @@
 	function pimp_headings() {
 		var divs = document.getElementsByTagName('div');
 		for(var i = 0; i < divs.length; i++) {
-			if(divs[i].className == 'tage') {
+			if(divs[i].id == 'mitte_news') {
 				document.body.innerHTML = divs[i].innerHTML;
 				return;
 			}
