@@ -56,6 +56,7 @@
 
 	document.body.style.margin = '25px';
 	document.body.style.width = '800px';
+	document.body.style.background = '#ffffff';
 
 	if(document.title.match(/7-Tage-News/))
 		pimp_headings();
