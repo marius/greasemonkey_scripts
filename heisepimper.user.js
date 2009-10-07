@@ -20,8 +20,15 @@
 (function() {
 	function pimp_news() {
 		GM_log("news");
-		var date = document.title.substring(15, 23);
-		var shortTitle = document.title.replace(/heise online - \d\d\.\d\d\.\d\d - /, '');
+		var shortTitle = document.title.replace(/heise online - /, '');
+		var ps = document.getElementsByTagName('p');
+		var date = '';
+		for(var i = 0; i < ps.length; i++) {
+			if(ps[i].className == 'news_datum') {
+				date = ps[i].innerHTML;
+				break;
+			}
+		}
 		var divs = document.getElementsByTagName('div');
 		for(var i = 0; i < divs.length; i++) {
 			if(divs[i].className == 'meldung_wrapper') {
