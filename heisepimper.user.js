@@ -3,6 +3,7 @@
 // @description    Removes annoyances from heise sites
 // @author         Marius Nuennerich (marius at nuenneri.ch)
 // @namespace      http://github.com/Marius/greasemonky_scripts
+// @grant          GM_log
 // @include        http://*.heise.de/newsticker/*
 // @include        http://*.heise.de/tp/*
 // @include        http://*.heise.de/open/*
@@ -44,7 +45,7 @@
 
 	function pimp_headings() {
 		GM_log("headings");
-		document.body.innerHTML = document.getElementById('mitte_news').innerHTML;
+		document.body.innerHTML = document.getElementById('mitte_links').innerHTML;
 	}
 
 	function pimp_telepolis() {
@@ -97,12 +98,14 @@
 
 	if(document.title.match(/7-Tage-News/))
 		pimp_headings();
-	else if(document.title.match(/^TELEPOLIS/))
+  /*
+	else if(document.title.match(/^Telepolis/))
 		pimp_telepolis();
 	else if(document.title.match(/Open Source/))
 		pimp_open_headings();
 	else if(document.title.match(/heise open/))
 		pimp_open();
+  */
 	else
 		pimp_news();
 }());
