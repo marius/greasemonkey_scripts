@@ -21,7 +21,7 @@
 (function() {
   function pimp_news() {
     GM_log("news");
-    var shortTitle = document.title.replace(/heise online - /, '');
+    var shortTitle = document.title.replace(/ \| heise online/, '');
     var ps = document.getElementsByTagName('p');
     var date = '';
     for(var i = 0; i < ps.length; i++) {
