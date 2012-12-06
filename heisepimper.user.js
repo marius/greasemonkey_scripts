@@ -63,32 +63,16 @@
     GM_log("open headings");
   }
 
-  function pimp_open() {
-    GM_log("open");
-    var date = document.title.substring(13, 21);
-    var shortTitle = document.title.replace(/heise open - \d\d\.\d\d\.\d\d - /, '');
-    var ps = document.getElementsByTagName('p');
-    var navi = '';
-    for(var i = 0; i < ps.length; i++) {
-      if(ps[i].className == 'artikel_navi') {
-        navi = ps[i].innerHTML;
-        break;
-      }
-    }
+  function pimp_open_news() {
+    GM_log("open news");
+    var shortTitle = document.title.replace(/ \| heise open/, '');
     var divs = document.getElementsByTagName('div');
     for(var i = 0; i < divs.length; i++) {
       if(divs[i].className == 'meldung_wrapper') {
-        document.body.innerHTML = date + divs[i].innerHTML + navi;
+        document.body.innerHTML = "<h1>" + shortTitle + "</h1>" + divs[i].innerHTML;
         document.title = shortTitle;
         return;
       }
-    }
-  }
-
-  var spans = document.getElementsByTagName('span');
-  for(var i = 0; i < spans.length; i++) {
-    if(spans[i].textContent == 'Anzeige') {
-      spans[i].style.display = 'none';
     }
   }
 
@@ -96,6 +80,13 @@
     document.body.style.margin = '25px';
     document.body.style.width = '800px';
     document.body.style.background = '#ffffff';
+  }
+
+  var spans = document.getElementsByTagName('span');
+  for(var i = 0; i < spans.length; i++) {
+    if(spans[i].textContent == 'Anzeige') {
+      spans[i].style.display = 'none';
+    }
   }
 
   var loc = document.location.toString();
@@ -107,8 +98,13 @@
     body_style();
     pimp_headings();
   }
-  else
+  else if(loc.match(/www\.heise\.de\/open\/meldung/)) {
+    body_style();
+    pimp_open_news();
+  }
+  else {
     GM_log("nothing done");
+  }
   /*
   else if(document.title.match(/^Telepolis/))
     pimp_telepolis();
