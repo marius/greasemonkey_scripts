@@ -61,6 +61,8 @@
 
   function pimp_open_headings() {
     GM_log("open headings");
+    document.getElementById('fussbereich').style.display = 'none';
+    document.body.innerHTML = document.getElementById('mitte_links').innerHTML;
   }
 
   function pimp_open_news() {
@@ -101,6 +103,10 @@
   else if(loc.match(/www\.heise\.de\/open\/meldung/)) {
     body_style();
     pimp_open_news();
+  }
+  else if(loc.match(/www\.heise\.de\/open\/news/)) {
+    body_style();
+    pimp_open_headings();
   }
   else {
     GM_log("nothing done");
